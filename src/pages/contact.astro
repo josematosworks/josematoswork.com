@@ -1,0 +1,76 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Header from '~/components/widgets/Header.astro';
+import HeroText from '~/components/widgets/HeroText.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Features from '~/components/widgets/Features.astro';
+
+const metadata = {
+  title: 'Contact',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- HeroText Widget ******************* -->
+  <Fragment slot="header">
+    <Header
+      links={[]}
+      actions={[
+        { text: 'Download CV', href: '/pdfs/Jose_Matos_Senior_Frontend_Engineer_Resume.pdf', target: '_blank' },
+      ]}
+      isSticky
+      showToggleTheme
+    />
+  </Fragment>
+
+  <HeroText tagline="Contact" title="Let's Connect!" />
+
+  <ContactUs
+    id="form"
+    title="Get in Touch"
+    subtitle="I'm always open to new opportunities and collaborations. Feel free to reach out if you have any questions or just want to say hello!"
+    inputs={[
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+    }}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="I'll do my best to respond within 24-48 hours."
+  />
+
+  <!-- Features Widget ************** -->
+
+  <Features
+    title="Other Ways to Reach Me"
+    items={[
+      {
+        title: 'Phone',
+        description: '+41 782 275 230',
+        icon: 'tabler:headset',
+      },
+      {
+        title: 'Email',
+        description: 'contact@josematoswork.com',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Location',
+        description: 'Basel, Switzerland',
+        icon: 'tabler:map-pin',
+      },
+    ]}
+  />
+</Layout>
