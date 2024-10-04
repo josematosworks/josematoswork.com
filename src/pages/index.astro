@@ -1,0 +1,278 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Skills from '~/components/widgets/Skills.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+const metadata = {
+  title: 'José Matos Work',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    id="hero"
+    title="José Matos"
+    tagline="Senior Frontend Engineer"
+    actions={[{ variant: 'primary', text: 'Hire me', href: getPermalink('/contact#form') }]}
+  >
+    <Fragment slot="subtitle">
+      With over 15 years of experience in software development, I bring deep expertise in JavaScript, TypeScript, and
+      modern frameworks such as Angular, React, and Lit. My recent focus on front-end engineering includes 7 years of
+      hands-on experience in delivering high-quality, scalable web applications. I excel in agile, fully remote
+      environments, collaborating cross-functionally to ship products that enhance user experience and performance.
+    </Fragment>
+  </Hero>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="about"
+    columns={3}
+    items={[
+      {
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          target: '_blank',
+          text: 'LinkedIn',
+          href: 'https://linkedin.com/in/jose-matos-software-engineer',
+        },
+      },
+      {
+        icon: 'tabler:brand-github',
+        callToAction: {
+          target: '_blank',
+          text: 'GitHub',
+          href: 'https://github.com/josematoswork',
+        },
+      },
+      {
+        icon: 'tabler:world',
+        callToAction: {
+          target: '_blank',
+          text: 'Blog',
+          href: 'https://blog.josematos.work',
+        },
+      },
+    ]}
+    image={{
+      src: '~/assets/images/profile.jpg',
+      alt: 'José Matos',
+      loading: 'eager',
+    }}
+  >
+    <Fragment slot="content">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">About me</h2>
+      <p>
+        Known for adopting new technologies and sharing knowledge, I'm seeking Senior Frontend Engineer roles where I
+        can drive technical excellence and foster innovation.
+      </p>
+      <br />
+      <p>
+        I excel in agile, fully remote environments, collaborating cross-functionally to ship products that enhance user
+        experience and performance.
+      </p>
+      <br />
+      <p>If you're curious to dive deeper into my work, you can follow me:</p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="resume"
+    title="Work experience"
+    items={[
+      {
+        title:
+          'Senior Frontend Engineer <br /> <span class="font-normal">Reddit, San Francisco, US - Remote</span> <br /> <span class="text-sm font-normal">Oct 2023 - Present</span>',
+        description: `Engineered a new moderation queue and multiple moderator tools using Lit and TypeScript, improving moderators efficiency by 25%. Enhanced legacy functionalities with React and Redux, driving a 20% improvement in user satisfaction through seamless UI/UX enhancements. Performed thorough code reviews across the team, ensuring adherence to coding standards and driving improvements in code quality, resulting in a measurable 15% decrease in production defects. Successfully implemented multiple complex web application projects from start to finish, demonstrating the ability to work independently with minimal supervision.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Senior Frontend Engineer <br /> <span class="font-normal">Norby, New York, US - Remote</span> <br /> <span class="text-sm font-normal">Apr 2022 - Sep 2023</span>',
+        description: `Engineered a comprehensive UiKit component library and design system employing Angular and Storybook, reducing development time by 30% for new UI features and providing a consistent UI development across projects. Architected and developed a landing page editor in Angular, employing the custom UiKit components, boosting the user experience while maintaining visual cohesiveness. Collaborated closely with product managers and designers to translate business requirements into user-friendly frontend solutions, showcasing strong teamwork and communication abilities.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Senior Frontend Engineer <br /> <span class="font-normal">TestGorilla, Netherlands - Remote</span> <br /> <span class="text-sm font-normal">Dec 2021 - Apr 2022</span>',
+        description: `Developed new frontend features independently, delivering intuitive user interfaces that elevated the user experience by 18%. Conducted detailed code reviews, guaranteeing adherence to best practices and promoting continuous learning within the team. Leveraged problem-solving skills to debug and resolve frontend bugs, guaranteeing optimal performance and minimizing downtime.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Senior Application Engineer <br /> <span class="font-normal">Swiss International Air Lines, Basel, Switzerland</span> <br /> <span class="text-sm font-normal">Feb 2019 - Dec 2021</span>',
+        description: `Boosted user interactions and dropped page load times by designing engaging and responsive user interfaces with Angular 8-12. Led by example in championing Angular best practices, actively contributing to the technical development of junior and mid-level developers. Spearheaded initiatives that promoted continuous improvement, ensuring the team adhered to high standards of code quality and performance. Implemented robust unit tests for Angular and .NET Core applications, improving test coverage and mitigating production bugs by 25%.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Senior Software Engineer <br /> <span class="font-normal">CloudWorks, Oporto, Portugal</span> <br /> <span class="text-sm font-normal">Oct 2014 - Jan 2019</span>',
+        description: `Led a team of 5 developers in formulating and delivering tailored software solutions, achieving a 95% on-time project delivery rate. Collaborated with clients and stakeholders to define functional and non-functional requirements, assuring alignment with business goals. Managed the entire development process, making sure that the team adhered to high standards of software architecture and design.`,
+        icon: 'tabler:briefcase',
+      },
+      {
+        title:
+          'Software Engineer <br /> <span class="font-normal">Kiosk Zone, Oporto, Portugal</span> <br /> <span class="text-sm font-normal">Jul 2008 - Sep 2014</span>',
+        description: `Designed and forged bespoke software solutions for the insurance industry, resulting in a 30% increase in operational efficiency for key clients. Guided junior developers by offering tailored feedback and hands-on support, fostering their technical growth and contributing to a collaborative team environment. Encouraged open communication and cross-functional learning, certifying best practices were understood and applied consistently across projects. Integrated systems using SOAP and REST webservices to facilitate seamless data exchange and system interactions.`,
+        icon: 'tabler:briefcase',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Steps Widget ****************** -->
+
+  <Steps
+    id="education"
+    title="Education"
+    items={[
+      {
+        title: `Bachelor's Degree in Computer Science <br /> <span class="font-normal">University of Oporto</span> <br /> <span class="text-sm font-normal">Graduated: Jun 2008</span>`,
+        icon: 'tabler:school',
+      },
+    ]}
+    classes={{ container: 'max-w-3xl' }}
+  />
+
+  <!-- Skills Widget ************** -->
+
+  <Skills
+    title="Skills"
+    subtitle="Discover the proficiencies that allow me to bring innovative solutions to life through development."
+    columns={3}
+    defaultIcon="tabler:point-filled"
+    items={[
+      {
+        title: 'Frontend Development',
+        description: 'Expertise in JavaScript, TypeScript, Angular, React, and Lit.',
+      },
+      {
+        title: 'Backend Development',
+        description: 'Experience with Node.js, .NET Core, and SQL databases.',
+      },
+      {
+        title: 'Agile Methodologies',
+        description: 'Proficient in Scrum and Kanban practices.',
+      },
+      {
+        title: 'Testing',
+        description: 'Experience with Jest, Jasmine, Cypress, and Playwright.',
+      },
+      {
+        title: 'Version Control',
+        description: 'Proficient with Git and collaborative development workflows.',
+      },
+      {
+        title: 'CI/CD',
+        description: 'Experience with continuous integration and deployment pipelines.',
+      },
+      {
+        title: 'Cloud Technologies',
+        description: 'Familiarity with AWS, Azure, and Google Cloud.',
+      },
+      {
+        title: 'Performance Optimization',
+        description: 'Skilled in improving web application performance and load times.',
+      },
+      {
+        title: 'API Development',
+        description: 'Experience in designing and implementing RESTful APIs.',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    id="portfolio"
+    title="Featured Projects"
+    subtitle="A showcase of my recent work and contributions to innovative web applications."
+    isReversed
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'Developed a high-performance web application for a leading tech company, focusing on scalability and user experience.',
+      },
+      {
+        title: 'Role:',
+        description:
+          'Led the frontend development using React and TypeScript, implemented state management with Redux, and integrated with RESTful APIs.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Project Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 1: <br /><span class="text-2xl">Enterprise Web Application</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    isAfterContent={true}
+    items={[
+      {
+        title: 'Description:',
+        description:
+          'Engineered a robust component library and design system for a fast-growing startup, enhancing development efficiency and UI consistency.',
+      },
+      {
+        title: 'Role:',
+        description:
+          'Architected and implemented reusable components using Angular and Storybook, established coding standards, and provided documentation for the team.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Component Library Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        Project 2: <br /><span class="text-2xl">Component Library and Design System</span>
+      </h3>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    title="Let's build something amazing together"
+    subtitle="Ready to bring your ideas to life with cutting-edge web technologies?"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Hire me',
+        href: getPermalink('/contact#form'),
+      },
+    ]}
+  />
+</Layout>
