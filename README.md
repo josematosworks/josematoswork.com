@@ -24,8 +24,6 @@ This combination of technologies allows for a fast, efficient, and maintainable 
 - ✅ **Open Graph tags** for social media sharing.
 - ✅ **Analytics** built-in Google Analytics.
 
-
-
 ### Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -37,5 +35,3 @@ All commands are run from the root of the project, from a terminal:
 | `npm run build`   | Build your production site to `./dist/`      |
 | `npm run preview` | Preview your build locally, before deploying |
 | `npm run fix `    | Run Eslint and Prettier                      |
-
-
