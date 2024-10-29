@@ -1,11 +1,39 @@
 ---
+export const prerender = false;
+
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
-const { action = '/api/contact', method = 'POST', inputs, textarea, disclaimer, button = 'Contact me', description = '' } = Astro.props;
+const { inputs, textarea, disclaimer, button = 'Contact me', description = '' } = Astro.props;
+
+type formData = {
+  name: string;
+  email: string;
+  message: string;
+};
+
+if (Astro.request.method === "POST") {
+  try {
+    const formData = await Astro.request.formData();
+    const response = await fetch(Astro.url + "/api/sendEmail.json", {
+      method: "POST",
+      body: formData,
+    });
+
+    const data: formData = await response.json();
+
+    if (response.status === 200) {
+      console.log(data.message);
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(`Error: ${error.message}`);
+    }
+  }
+}
 ---
 
-<form action={action} method={method}>
+<form method="POST">
   {
     inputs &&
       inputs.map(
@@ -70,7 +98,7 @@ const { action = '/api/contact', method = 'POST', inputs, textarea, disclaimer, 
   {
     button && (
       <div class="mt-10 grid">
-        <Button variant="primary" type="submit">
+        <Button variant="primary">
           {button}
         </Button>
       </div>
