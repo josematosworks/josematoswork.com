@@ -1,7 +1,7 @@
 {
   "name": "josematoswork.com",
   "version": "1.0.0-beta.46",
-  "description": "AstroWind: A free template using Astro 4.0 and Tailwind CSS. Astro starter theme.",
+  "description": "Personal website of José Matos",
   "type": "module",
   "private": true,
   "engines": {
@@ -32,6 +32,7 @@
     "astro-icon": "^1.1.1",
     "limax": "4.1.0",
     "lodash.merge": "^4.6.2",
+    "resend": "^4.0.1-alpha.0",
     "unpic": "^3.18.0"
   },
   "devDependencies": {
