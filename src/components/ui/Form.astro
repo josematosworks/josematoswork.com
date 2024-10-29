@@ -2,7 +2,7 @@
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
-const { action = '/api/contact', method = 'POST', inputs, textarea, disclaimer, button, description } = Astro.props;
+const { action = '/api/contact', method = 'POST', inputs, textarea, disclaimer, button = 'Contact me', description = '' } = Astro.props;
 ---
 
 <form action={action} method={method}>
