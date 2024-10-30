@@ -103,7 +103,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                             { 'jmw-link-active': href2 === currentPath },
                           ]}
                           href={href2}
-                          target={href2.includes('http') ? '_blank' : '_self'}
+                          target={href2?.includes('http') ? '_blank' : '_self'}
                         >
                           {text2}
                         </a>
@@ -118,7 +118,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     { 'jmw-link-active': href === currentPath },
                   ]}
                   href={href}
-                  target={href.includes('http') ? '_blank' : '_self'}
+                  target={href?.includes('http') ? '_blank' : '_self'}
                 >
                   {text}
                 </a>

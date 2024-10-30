@@ -1,1 +1,1 @@
-import '@inox-tools/astro-when';
+import "@inox-tools/astro-when";
