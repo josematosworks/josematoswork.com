@@ -33,8 +33,7 @@ const whenExternalScripts = (
     : [];
 
 export default defineConfig({
-  output: "server",
-  adapter: cloudflare(),
+  output: "static",
 
   integrations: [
     tailwind({

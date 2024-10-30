@@ -1,0 +1,14 @@
+---
+export interface ToastProps {
+  message: string;
+  type: 'success' | 'error';
+  onClose: () => void;
+}
+
+const { message, type, onClose } = Astro.props;
+---
+
+<div class={`fixed top-4 right-4 z-50 flex items-center px-4 py-2 rounded shadow-lg text-white ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`}>
+  <span>{message}</span>
+  <button on:click={onClose} class="ml-4 text-lg focus:outline-none">&times;</button>
+</div> 

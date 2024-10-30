@@ -1,39 +1,11 @@
 ---
-export const prerender = false;
-
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
 const { inputs, textarea, disclaimer, button = 'Contact me', description = '' } = Astro.props;
 
-type formData = {
-  name: string;
-  email: string;
-  message: string;
-};
-
-if (Astro.request.method === "POST") {
-  try {
-    const formData = await Astro.request.formData();
-    const response = await fetch(Astro.url + "/api/sendEmail.json", {
-      method: "POST",
-      body: formData,
-    });
-
-    const data: formData = await response.json();
-
-    if (response.status === 200) {
-      console.log(data.message);
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      console.error(`Error: ${error.message}`);
-    }
-  }
-}
 ---
-
-<form method="POST">
+<form id="contact-form">
   {
     inputs &&
       inputs.map(
@@ -113,3 +85,69 @@ if (Astro.request.method === "POST") {
     )
   }
 </form>
+
+<script type="module">
+  function showToast(message, type) {
+    let toastContainer = document.getElementById('toast-container');
+
+    // Create toastContainer if it doesn't exist
+    if (!toastContainer) {
+      toastContainer = document.createElement('div');
+      toastContainer.id = 'toast-container';
+      toastContainer.className = 'fixed bottom-4 right-4 z-50'; // Changed from 'top-4' to 'bottom-4'
+      document.body.appendChild(toastContainer);
+    }
+
+    const toast = document.createElement('div');
+    toast.className = `flex items-center px-4 py-2 rounded shadow-lg text-white mb-4 ${
+      type === 'success' ? 'bg-green-500' : 'bg-red-500'
+    }`;
+    toast.innerHTML = `
+      <span>${message}</span>
+      <button class="ml-4 text-lg focus:outline-none">&times;</button>
+    `;
+    
+    // Add event listener to the close button
+    toast.querySelector('button').addEventListener('click', () => {
+      toast.remove();
+    });
+
+    toastContainer.appendChild(toast);
+
+    // Automatically remove toast after 3 seconds
+    setTimeout(() => {
+      toast.remove();
+    }, 3000);
+  }
+
+  document.getElementById('contact-form').addEventListener('submit', async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries()); // Convert form data to JSON-ready object
+
+    try {
+      console.log('data', JSON.stringify(data));
+      const response = await fetch('https://contact-form-worker-resend.josematos.workers.dev/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // Specify JSON content type
+        },
+        body: JSON.stringify(data), // Send JSON data
+      });
+
+      if (response.ok) {
+        // Display success toast
+        showToast('Message sent successfully!', 'success');
+        event.target.reset(); // Optional: Reset the form
+      } else {
+        // Display error toast
+        showToast('Failed to send message. Please try again later.', 'error');
+      }
+    } catch (error) {
+      // Display error toast
+      showToast('An error occurred while sending your message. Please try again.', 'error');
+      console.error('Submission error:', error);
+    }
+  });
+</script>
