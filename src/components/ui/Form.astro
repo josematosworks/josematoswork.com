@@ -23,7 +23,9 @@ const { inputs, textarea, disclaimer, button = 'Contact me', description = '' } 
                 id={name}
                 autocomplete={autocomplete}
                 placeholder={placeholder}
+                required
                 class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+                {...(type === 'email' ? { pattern: "[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" } : {})}
               />
             </div>
           )
@@ -41,6 +43,7 @@ const { inputs, textarea, disclaimer, button = 'Contact me', description = '' } 
           name={textarea.name ? textarea.name : 'message'}
           rows={textarea.rows ? textarea.rows : 4}
           placeholder={textarea.placeholder}
+          required
           class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
         />
       </div>
@@ -55,6 +58,7 @@ const { inputs, textarea, disclaimer, button = 'Contact me', description = '' } 
             id="disclaimer"
             name="disclaimer"
             type="checkbox"
+            required
             class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
           />
         </div>
@@ -87,14 +91,40 @@ const { inputs, textarea, disclaimer, button = 'Contact me', description = '' } 
 </form>
 
 <script is:inline type="module">
+  function sanitizeInput(input) {
+    const div = document.createElement('div');
+    div.textContent = input;
+    return div.innerHTML;
+  }
+
+  function validateForm(form) {
+    const requiredFields = form.querySelectorAll('[required]');
+    return Array.from(requiredFields).every(field => {
+      if (field.type === 'checkbox') {
+        return field.checked;
+      }
+      if (field.type === 'email') {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        return field.value.trim() !== '' && emailRegex.test(field.value);
+      }
+      return field.value.trim() !== '';
+    });
+  }
+
+  function updateSubmitButton(form) {
+    const submitButton = form.querySelector('button[type="submit"]');
+    submitButton.disabled = !validateForm(form);
+    submitButton.style.opacity = submitButton.disabled ? '0.5' : '1';
+    submitButton.style.cursor = submitButton.disabled ? 'not-allowed' : 'pointer';
+  }
+
   function showToast(message, type) {
     let toastContainer = document.getElementById('toast-container');
 
-    // Create toastContainer if it doesn't exist
     if (!toastContainer) {
       toastContainer = document.createElement('div');
       toastContainer.id = 'toast-container';
-      toastContainer.className = 'fixed bottom-4 right-4 z-50'; // Changed from 'top-4' to 'bottom-4'
+      toastContainer.className = 'fixed bottom-4 right-4 z-50';
       document.body.appendChild(toastContainer);
     }
 
@@ -107,45 +137,57 @@ const { inputs, textarea, disclaimer, button = 'Contact me', description = '' } 
       <button class="ml-4 text-lg focus:outline-none">&times;</button>
     `;
     
-    // Add event listener to the close button
     toast.querySelector('button').addEventListener('click', () => {
       toast.remove();
     });
 
     toastContainer.appendChild(toast);
 
-    // Automatically remove toast after 3 seconds
     setTimeout(() => {
       toast.remove();
     }, 3000);
   }
 
-  document.getElementById('contact-form').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent the default form submission
+  const form = document.getElementById('contact-form');
+
+  // Add input event listeners to all form fields
+  form.querySelectorAll('input, textarea').forEach(field => {
+    field.addEventListener('input', () => updateSubmitButton(form));
+  });
+
+  // Initial button state
+  updateSubmitButton(form);
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
     const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries()); // Convert form data to JSON-ready object
+    const data = Object.fromEntries(formData.entries());
+
+    // Sanitize all text inputs
+    Object.keys(data).forEach(key => {
+      if (typeof data[key] === 'string') {
+        data[key] = sanitizeInput(data[key]);
+      }
+    });
 
     try {
-      console.log('data', JSON.stringify(data));
       const response = await fetch('https://contact-form-worker-resend.josematos.workers.dev/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json', // Specify JSON content type
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data), // Send JSON data
+        body: JSON.stringify(data),
       });
 
       if (response.ok) {
-        // Display success toast
         showToast('Message sent successfully!', 'success');
-        event.target.reset(); // Optional: Reset the form
+        event.target.reset();
+        updateSubmitButton(form); // Reset button state
       } else {
-        // Display error toast
         showToast('Failed to send message. Please try again later.', 'error');
       }
     } catch (error) {
-      // Display error toast
       showToast('An error occurred while sending your message. Please try again.', 'error');
       console.error('Submission error:', error);
     }
