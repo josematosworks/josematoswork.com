@@ -74,3 +74,81 @@ const metadata = {
     ]}
   />
 </Layout>
+<style is:global>
+  #n8n-chat {
+	--chat--color-primary: #8a4300;
+	--chat--color-primary-shade-50: #000000;
+	--chat--color-primary-shade-100: #404040;
+	--chat--color-secondary: #404040;
+	--chat--color-secondary-shade-50: #8a4300;
+	--chat--color-white: #ffffff;
+	--chat--color-light: #f2f4f8;
+	--chat--color-light-shade-50: #e6e9f1;
+	--chat--color-light-shade-100: #c2c5cc;
+	--chat--color-medium: #d2d4d9;
+	--chat--color-dark: #000000;
+	--chat--color-disabled: #777980;
+	--chat--color-typing: #404040;
+
+	--chat--spacing: 1rem;
+	--chat--border-radius: 8px;
+	--chat--transition-duration: 0.15s;
+
+	--chat--window--width: 400px;
+	--chat--window--height: 600px;
+	--chat--body--background: #ffffff;
+
+	--chat--header-height: auto;
+	--chat--header--padding: 16px;
+	--chat--header--background: #ffffff;
+	--chat--header--color: var(--chat--color-white);
+	--chat--header--border-top: none;
+	--chat--header--border-bottom: 1px solid var(--chat--color-light-shade-100);
+	--chat--heading--font-size: 16px;
+	--chat--header--color: var(--chat--color-dark);
+	--chat--subtitle--font-size: 12px;
+	--chat--subtitle--line-height: 1;
+
+	--chat--textarea--height: 50px;
+	--chat--input--font-size: 12px;
+
+	--chat--message--font-size: 12px;
+	--chat--message--padding: var(--chat--spacing);
+	--chat--message--border-radius: var(--chat--border-radius);
+	--chat--message-line-height: 1.4;
+	--chat--message--bot--background: var(--chat--color-light);
+	--chat--message--bot--color: var(--chat--color-dark);
+	--chat--message--bot--border: none;
+	--chat--message--user--background: var(--chat--color-secondary);
+	--chat--message--user--color: var(--chat--color-white);
+	--chat--message--user--border: none;
+	--chat--message--pre--background: #ffffff;
+
+	--chat--toggle--background: var(--chat--color-primary);
+	--chat--toggle--hover--background: var(--chat--color-primary-shade-50);
+	--chat--toggle--active--background: var(--chat--color-primary-shade-100);
+	--chat--toggle--color: var(--chat--color-white);
+	--chat--toggle--size: 64px;
+    }
+
+</style>
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<script type="module">
+	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+	createChat({
+		webhookUrl: 'https://n8n.josematoswork.com/webhook/15e4d662-3f98-48d0-9f50-68838769ecac/chat',
+    initialMessages: [
+      'I\'m an AI assistant that knows everything about Jos\é. How can I assist you today?'
+    ],
+    i18n: {
+      en: {
+        title: 'Hi there! 👋',
+        subtitle: "Start a chat. I'm here to help you 24/7.",
+        footer: '',
+        getStarted: 'New Conversation',
+        inputPlaceholder: 'Type your question about Jos\é',
+        },
+      },
+    });
+</script>
