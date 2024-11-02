@@ -7,15 +7,14 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import Skills from '~/components/widgets/Skills.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import { getPermalink } from '~/utils/permalinks';
-
+import { projects } from '~/data/projects';
+import Project from '~/components/widgets/Project.astro';
 const metadata = {
   title: 'José Matos Work',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
-
   <Hero
     id="hero"
     title="José Matos"
@@ -29,8 +28,6 @@ const metadata = {
       environments, collaborating cross-functionally to ship products that enhance user experience and performance.
     </Fragment>
   </Hero>
-
-  <!-- Content Widget **************** -->
 
   <Content
     id="about"
@@ -87,8 +84,6 @@ const metadata = {
     </Fragment>
   </Content>
 
-  <!-- Steps Widget ****************** -->
-
   <Steps
     id="resume"
     title="Work experience"
@@ -133,8 +128,6 @@ const metadata = {
     classes={{ container: 'max-w-3xl' }}
   />
 
-  <!-- Steps Widget ****************** -->
-
   <Steps
     id="education"
     title="Education"
@@ -146,8 +139,6 @@ const metadata = {
     ]}
     classes={{ container: 'max-w-3xl' }}
   />
-
-  <!-- Skills Widget ************** -->
 
   <Skills
     title="Skills"
@@ -194,109 +185,34 @@ const metadata = {
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <div class="relative inset-0 bg-blue-50 py-12 md:py-16 lg:py-20 dark:bg-transparent">
+    <div class="md:mx-auto text-center max-w-xl sm:mx-auto lg:max-w-2xl">
+      <h2 class="leading-tighter text-heading text-4xl md:text-5xl font-bold tracking-tighter mb-4 font-heading">
+        Featured Projects
+      </h2>
+      <p class="mt-4 max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400">
+        A showcase of my recent work and contributions to innovative web applications.
+      </p>
+    </div>
+</div>
 
-  <Content
-    id="portfolio"
-    title="Featured Projects"
-    subtitle="A showcase of my recent work and contributions to innovative web applications."
-    isReversed
-    items={[
-      {
-        title: 'Description:',
-        description:
-          'Developed a high-performance personal website to showcase my portfolio and technical skills, leveraging cutting-edge web technologies. This project demonstrates my ability to work with modern frameworks and tools, emphasizing code quality, performance optimization, and responsive design.',
-      },
-      {
-        title: 'Key Features:',
-        description:
-          '- Achieved exceptional performance scores in PageSpeed Insights, ensuring a fast and efficient user experience.<br/>- Implemented a responsive design with dark mode support using Tailwind CSS for flexible and maintainable styling.</br>- Utilized Astro\'s static site generation capabilities to create lightning-fast page loads and improved SEO.</br>- Integrated image optimization techniques using Astro Assets and Unpic for efficient image delivery across various devices.</br>- Implemented analytics tracking to gain insights into user behavior and site performance.',
-      },
-      {
-        title: 'Role:',
-        description:
-          'As the sole developer of this project, I:<br/> - Architected and implemented the entire website using Astro, React, and TypeScript.<br/> - Leveraged Astro\'s component-based architecture to create reusable UI elements.<br/> - Implemented SEO best practices, including Open Graph tags for improved social media sharing.<br/> - Set up a robust development environment with ESLint and Prettier for consistent code quality.<br/>  - Utilized Git for version control and implemented a streamlined deployment process.',
-      },
-      {
-        icon: 'tabler:brand-github',
-        callToAction: {
-          target: '_blank',
-          text: 'GitHub',
-          href: 'https://github.com/josematosworks/josematoswork.com',
-        },
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Personal Website Project',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 1: <br /><span class="text-2xl">Personal Website</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent={true}
-    items={[
-      {
-        title: 'Description:',
-        description:
-          'Developed a Netflix clone application using Angular, showcasing proficiency in modern web development techniques and the ability to replicate complex user interfaces. This project demonstrates skills in component-based architecture, state management, and integration with external APIs.',
-      },
-      {
-        title: 'Key Features:',
-        description:
-          '- Implemented a responsive design that closely mimics Netflix\'s user interface<br/>- Integrated with The Movie Database (TMDB) API to fetch and display movie and TV show data<br/>- Implemented mocked user authentication and profile management<br/>',
-      },
-      {
-        title: 'Role:',
-        description:
-          'As the sole developer of this project, I:<br/>- Architected and implemented the entire application using Angular and related technologies<br/>- Designed and implemented the responsive UI using CSS and potentially a UI framework<br/>- Integrated with external APIs and managed state using appropriate state management solutions<br/>- Optimized performance and ensured cross-browser compatibility',
-      },
-      {
-        icon: 'tabler:brand-github',
-        callToAction: {
-          target: '_blank',
-          text: 'GitHub',
-          href: 'https://github.com/josematosworks/NetflixClone',
-        },
-      },
-      {
-        icon: 'tabler:world',
-        callToAction: {
-          target: '_blank',
-          text: 'Live Demo',
-          href: 'https://netflix-clone.josematos.work',
-        },
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1534670007418-fbb7f6cf32c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Netflix Clone Project',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Project 2: <br /><span class="text-2xl">Netflix Clone</span>
-      </h3>
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- CallToAction Widget *********** -->
+  {
+    projects.map((project, index) => {
+      const isOdd = index % 2 !== 0;
+      return (
+        <div key={project.slug} class={`relative mx-auto max-w-7xl px-4 md:px-6 py-12 md:py-16 lg:py-20 text-default md:flex md:items-start md:gap-8 ${isOdd ? 'md:flex-row-reverse' : ''}`}>
+          <div class="md:w-1/2">
+            <img src={project.images[0].src} alt={project.images[0].alt} class="w-full rounded-lg shadow-lg" />
+          </div>
+          <div class="md:w-1/2">
+            <h2 class="text-3xl font-bold mb-4">{project.title}</h2>
+            <p class="mb-4">{project.description}</p>
+            <a href={`/projects/${project.slug}`} class="text-primary font-semibold">Learn More</a>
+          </div>
+        </div>
+      );
+    })
+  }
 
   <CallToAction
     title="Let's build something amazing together"
@@ -304,7 +220,7 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Hire me',
+        text: 'Get in Touch',
         href: getPermalink('/contact#form'),
       },
     ]}

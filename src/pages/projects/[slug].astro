@@ -1,0 +1,58 @@
+---
+import { projects, Project } from '../../data/projects';
+import Layout from '~/layouts/PageLayout.astro';
+import Image from '~/components/common/Image.astro';
+import Project from '~/components/widgets/Project.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getPermalink } from '~/utils/permalinks';
+
+export async function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+
+---
+<Layout metadata={{ title: project.title }}>
+  <section class="project-detail">
+  <Project
+    id="project.slug"
+    title={project.title}
+    subtitle={project.description}
+    isReversed
+    items={[
+      {
+        title: 'Key Features:',
+        description:
+          `${'- '+project.keyFeatures.join('<br/>- ')}`,
+        },
+        {
+        title: 'Role:',
+        description:
+            `${'As the sole developer of this project, I:<br/>'+project.role.join('<br/>- ')}`,
+        },
+    ]}
+    callToActions={project.callToActions}
+    images={project.images}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Project>
+
+<CallToAction
+    title="Let's build something amazing together"
+    subtitle="Ready to bring your ideas to life with cutting-edge web technologies?"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get in Touch',
+        href: getPermalink('/contact#form'),
+      },
+    ]}
+    />
+  </section>
+</Layout> 
