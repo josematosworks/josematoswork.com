@@ -208,7 +208,7 @@ const metadata = {
           <div class="md:w-1/2">
             <h2 class="text-3xl font-bold mb-4">{project.title}</h2>
             <p class="mb-4">{project.description}</p>
-            <a href={`/projects/${project.slug}`} class="text-primary font-semibold">Learn More</a>
+            <a href={`/projects/${project.slug}`} class="text-primary font-semibold" aria-label={`Learn more about ${project.title}`}>Learn More</a>
           </div>
         </div>
       );
