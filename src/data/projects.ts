@@ -44,8 +44,12 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: "~/assets/images/josematoswork.com.png",
+        src: "~/assets/images/josematoswork/josematoswork-landing.png",
         alt: "Personal Website Project",
+      },
+      {
+        src: "~/assets/images/josematoswork/josematoswork-lighthouse.png",
+        alt: "Personal Website Project Lighthouse score",
       },
     ],
     callToActions: [
@@ -75,8 +79,12 @@ export const projects: Project[] = [
     ],
     images: [
       {
-        src: "~/assets/images/netflix-clone.png",
-        alt: "Netflix Clone Project",
+        src: "~/assets/images/netflix-clone/netflix-clone.png",
+        alt: "Netflix Clone Project Landing page",
+      },
+      {
+        src: "~/assets/images/netflix-clone/netflix-clone-2.png",
+        alt: "Netflix Clone Project Home page",
       },
     ],
     callToActions: [
