@@ -102,4 +102,45 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "contact-form-worker",
+    title: "Contact Form Worker with Resend Integration",
+    description:
+      "Developed a Cloudflare Worker that handles submissions from a contact form, sending the collected data via the Resend API. This project emphasizes secure handling of environment variables, rate limiting, and automated deployments using GitHub Actions.",
+    keyFeatures: [
+      "Secure management of sensitive variables through GitHub Secrets.",
+      "Automated deployment to Cloudflare using GitHub Actions.",
+      "Integration with the Resend API for handling email submissions.",
+      "CORS handling to restrict requests from allowed origins.",
+      "Rate limiting to prevent abuse and manage submissions per IP address.",
+      "Error handling and logging for better observability.",
+    ],
+    role: [
+      "Architected and implemented the Cloudflare Worker using JavaScript.",
+      "Configured GitHub Actions for automated deployment.",
+      "Managed environment variables securely using GitHub Secrets.",
+      "Implemented rate limiting and error handling mechanisms.",
+      "Created a user-friendly HTML form for submissions.",
+    ],
+    images: [
+      {
+        src: "~/assets/images/contact-form-worker/contact-form-worker-demo.png",
+        alt: "Contact Form Worker Demo",
+      },
+    ],
+    callToActions: [
+      {
+        target: "_blank",
+        text: "GitHub Repository",
+        href: "https://github.com/josematosworks/contact-form-worker-resend",
+        icon: "tabler:brand-github",
+      },
+      {
+        target: "_blank",
+        text: "Live Demo",
+        href: "https://josematoswork.com/contact/",
+        icon: "tabler:world",
+      },
+    ],
+  },
 ];
