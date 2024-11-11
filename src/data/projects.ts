@@ -143,4 +143,46 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "n8n-ai-powered-rag-agent",
+    title: "AI-Powered RAG Agent with Google Drive Integration",
+    description:
+      "Developed an advanced Retrieval-Augmented Generation (RAG) AI agent with a chat interface, seamlessly integrated into a website. The agent can handle user queries by accessing information stored in a vector database, which is continuously updated with files from Google Drive.",
+    keyFeatures: [
+      "Interactive chat experience for real-time user queries.",
+      "Automated file management and processing from Google Drive.",
+      "Efficient storage of document embeddings in Supabase for quick retrieval.",
+      "Integration with OpenAI's API for language generation.",
+    ],
+    role: [
+      "Architected and implemented the RAG AI agent using n8n and OpenAI API.",
+      "Managed Google Drive integration for automated file handling.",
+      "Developed a custom chat interface for user interaction.",
+      "Configured PostgreSQL for chat memory and session management.",
+    ],
+    images: [
+      {
+        src: "~/assets/images/n8n-ai-powered-rag-agent/n8n-workflow-diagram.png",
+        alt: "RAG Agent Workflow Diagram",
+      },
+      {
+        src: "~/assets/images/n8n-ai-powered-rag-agent/chatbot.png",
+        alt: "AI-Powered RAG Agent Chat Interface",
+      },
+    ],
+    callToActions: [
+      {
+        target: "_blank",
+        text: "GitHub Repository",
+        href: "https://github.com/josematosworks/n8n-ai-powered-rag-agent",
+        icon: "tabler:brand-github",
+      },
+      {
+        target: "_blank",
+        text: "Live Demo",
+        href: "https://josematoswork.com/contact",
+        icon: "tabler:world",
+      },
+    ],
+  },
 ];
