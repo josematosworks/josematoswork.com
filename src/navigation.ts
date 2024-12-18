@@ -24,21 +24,15 @@ export const footerData = {
   ],
   socialLinks: [
     {
+      ariaLabel: "Linkedin",
+      icon: "tabler:brand-linkedin",
+      href: "https://linkedin.com/in/jose-matos-software-engineer",
+    },
+    {
       ariaLabel: "X",
       icon: "tabler:brand-x",
-      href: "https://x.com/josematosworks",
+      href: "https://x.com/josematoswork",
     },
-    {
-      ariaLabel: "Instagram",
-      icon: "tabler:brand-instagram",
-      href: "https://www.instagram.com/josematosworks",
-    },
-    {
-      ariaLabel: "Facebook",
-      icon: "tabler:brand-facebook",
-      href: "https://www.facebook.com/josematosworks",
-    },
-    { ariaLabel: "RSS", icon: "tabler:rss", href: getAsset("/rss.xml") },
     {
       ariaLabel: "Github",
       icon: "tabler:brand-github",
