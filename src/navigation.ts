@@ -11,7 +11,7 @@ export const headerData = {
   actions: [
     {
       text: "Download CV",
-      href: "/pdfs/Jose_Matos_Senior_Frontend_Engineer_Resume.pdf",
+      href: "/pdfs/Jose_Matos_Senior_Software_Engineer_Resume.pdf",
       target: "_blank",
     },
   ],
