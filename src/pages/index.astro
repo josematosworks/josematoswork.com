@@ -20,7 +20,10 @@ const metadata = {
     id="hero"
     title="José Matos"
     tagline="Senior Frontend Engineer"
-    actions={[{ variant: 'primary', text: 'Get in Touch', href: getPermalink('/contact#form') }]}
+    actions={[
+      { variant: 'primary', text: 'Get in Touch', href: getPermalink('/contact#form') },
+      { variant: 'secondary', text: 'Schedule a Meeting', href: 'https://calendly.com/developer-josematoswork', target: '_blank' }
+    ]}
   >
     <Fragment slot="subtitle">
       With over 15 years of experience in software development, I bring deep expertise in JavaScript, TypeScript, and

@@ -71,8 +71,30 @@ const metadata = {
         description: 'Basel, Switzerland',
         icon: 'tabler:map-pin',
       },
+      {
+        title: 'Schedule a Meeting',
+        description: '<a href="https://calendly.com/developer-josematoswork" target="_blank" class="text-blue-600 hover:underline">Book time on my calendar</a>',
+        icon: 'tabler:calendar',
+      },
     ]}
   />
+  <!-- Calendly Widget Section -->
+  <div class="py-12 md:py-16 lg:py-20">
+    <div class="md:mx-auto text-center max-w-xl sm:mx-auto lg:max-w-2xl mb-8">
+      <h2 class="leading-tighter text-heading text-3xl md:text-4xl font-bold tracking-tighter mb-4 font-heading">
+        Schedule a Meeting
+      </h2>
+      <p class="max-w-3xl mx-auto sm:text-center text-xl text-muted dark:text-slate-400">
+        Book time directly on my calendar for a conversation about potential collaborations or opportunities.
+      </p>
+    </div>
+    <div class="max-w-3xl mx-auto">
+      <!-- Calendly inline widget begin -->
+      <div class="calendly-inline-widget" data-url="https://calendly.com/developer-josematoswork" style="min-width:320px;height:700px;"></div>
+      <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+      <!-- Calendly inline widget end -->
+    </div>
+  </div>
 </Layout>
 <style is:global>
   #n8n-chat {
@@ -132,7 +154,7 @@ const metadata = {
     }
 
 </style>
-<link defer href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
 <script defer type="module">
 	import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
 
